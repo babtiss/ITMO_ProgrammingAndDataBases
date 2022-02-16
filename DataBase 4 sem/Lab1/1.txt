@@ -1,0 +1,5 @@
+Найти и вывести на экран названия продуктов, для которых определён цвет, но не определён размер
+
+SELECT p.name, p.Color
+FROM Production.Product as p
+WHERE p.Color IS NOT NULL and p.Size is NULL

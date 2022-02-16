@@ -1,0 +1,5 @@
+Найти и вывести на экран название продуктов, у которых ProductNumber содержив в себе дефис
+
+SELECT p.Name
+FROM Production.Product as p
+WHERE p.Name like '%-%'

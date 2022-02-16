@@ -1,0 +1,5 @@
+Найти и вывести на экран название продуктов, у которых в названии нет букв a,d,g,k,f,t,r
+
+SELECT p.Name
+FROM Production.Product as p
+WHERE p.Name not like '%[adgkftr]%'
