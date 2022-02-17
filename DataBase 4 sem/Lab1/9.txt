@@ -1,0 +1,11 @@
+Найти и вывести на экран нахвание продуктов, у которых третья буква названия или 'u' или 'а'
+
+SELECT p.Name
+FROM Production.Product as p
+WHERE p.Name like '__u%' or p.Name like '__a%'
+
+или 
+
+SELECT p.Name
+FROM Production.Product as p
+WHERE p.Name like '__[ua]%'

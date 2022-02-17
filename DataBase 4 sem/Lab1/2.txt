@@ -1,0 +1,4 @@
+Найти и вывести название продуктов, у которых номер подкатегории равен 1 или 3.
+SELECT p.name
+FROM Production.Product as p
+WHERE p.ProductSubcategoryID = 1 OR p.ProductSubcategoryID = 3
