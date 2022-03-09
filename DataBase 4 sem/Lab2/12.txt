@@ -1,1 +1,7 @@
 Вывести номера подкатегории на которые приходится более 5 товаров red
+
+select p.ProductSubcategoryID
+from Production.Product as p
+where p.ProductSubcategoryID is not null and p.Color = 'Red'
+group by p.ProductSubcategoryID
+having COUNT(*) > 5
