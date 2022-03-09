@@ -1,0 +1,6 @@
+Найти самый продаваемый товар, его ProductId, из числа тех чья цена продажи, UnitPrice, не превышает 100
+
+SELECT TOP 1 s.ProductID FROM Sales.SalesOrderDetail as s
+WHERE s.UnitPrice <= 100
+GROUP BY S.ProductID
+ORDER BY COUNT(*) DESC

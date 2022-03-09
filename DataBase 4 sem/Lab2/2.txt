@@ -1,0 +1,5 @@
+Найти все цвета товаров, такие что, товаров этого цвета не менее 2 и не более 5 в данном магазине.
+
+SELECT p.Color FROM Production.Product as p
+GROUP BY p.Color
+HAVING COUNT(*) >= 2 AND COUNT(*) <= 5
