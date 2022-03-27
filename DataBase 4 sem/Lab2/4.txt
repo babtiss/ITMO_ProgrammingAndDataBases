@@ -1,6 +1,0 @@
-Найти товары, которые были куплены более трех раз, при этом цена товара была более 100
-
-SELECT s.ProductID FROM Sales.SalesOrderDetail as s
-WHERE s.UnitPrice > 100
-GROUP BY s.ProductID
-HAVING Count(*) > 3
