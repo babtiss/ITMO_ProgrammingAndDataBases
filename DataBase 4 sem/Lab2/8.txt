@@ -1,7 +1,0 @@
-Найти номер подкатегории товаров с наибольшим разнообразицем цветов в ней
-
-SELECT top 1 p.ProductSubcategoryID
-FROM Production.Product as p
-WHERE p.Color is not NULL and p.ProductSubcategoryID is not NULL
-GROUP BY p.ProductSubcategoryID
-ORDER BY COUNT(distinct p.color) desc
