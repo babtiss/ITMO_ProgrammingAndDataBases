@@ -1,5 +1,0 @@
-Найти и вывести на экран названия продуктов, у которых цена меньше 40 или больше 300
-
-SELECT p.name
-FROM Production.Product as p
-WHERE p.StandardCost < 40 or p.StandardCost > 300
