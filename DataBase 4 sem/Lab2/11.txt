@@ -1,7 +1,0 @@
-Вывести номера подкатегорий, на которые приходится более 5 товаров
-
-select p.ProductSubcategoryID
-from Production.Product as p
-where p.ProductSubcategoryID is not null
-group by p.ProductSubcategoryID
-having COUNT(*) > 5
