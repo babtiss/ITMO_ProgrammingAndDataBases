@@ -1,6 +1,0 @@
-Найти все размеры товаров, таких что товаров этого размера более 10.
-
-SELECT P.Size FROM Production.Product as p
-WHERE p.Size is not null
-GROUP BY p.Size
-HAVING COUNT(*) > 10
