@@ -1,5 +1,0 @@
-Найти и вывести на экран название продуктов, у которых цена лежит в диапазоне от 40 до 300 не включая границы диапазона.
-
-SELECT p.name
-FROM Production.Product as p
-WHERE p.StandardCost > 40 and p.StandardCost < 300
