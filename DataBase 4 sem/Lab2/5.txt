@@ -1,6 +1,0 @@
-Вывести на экран список размерова, товаров отсортированный по убыванию количества красных товаров этого размера.
-
-SELECT P.Size FROM Production.Product as p
-WHERE p.Color = 'Red' AND p.size is not null
-GROUP BY p.Size
-ORDER BY p.Size desc
