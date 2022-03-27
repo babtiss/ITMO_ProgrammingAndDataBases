@@ -1,6 +1,0 @@
-Вывести на экран ProductID категорий с наибольшим кол-вом подкатегорий
-
-SELECT p.ProductCategoryID
-From Production.ProductSubcategory as p
-GROUP by p.ProductCategoryID
-ORDER BY COUNT(*) DESC
