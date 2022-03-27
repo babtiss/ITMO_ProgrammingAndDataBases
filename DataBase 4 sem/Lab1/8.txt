@@ -1,5 +1,0 @@
-Найти и вывести на экран имя клиентов(Person таблица) у которых среднее им MiddleName состоит более чем из 1 буквы
-
-SELECT p.FirstName
-FROM Person.Person as p
-WHERE p.MiddleName like '__%'
