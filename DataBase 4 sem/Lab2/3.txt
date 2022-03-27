@@ -1,6 +1,0 @@
-Найти номера подкатегорий товаров, таких что существует не менее двух товаров с цветом Red в этой подкатегории
-
-SELECT p.ProductSubcategoryID FROM Production.Product as p
-WHERE p.ProductSubcategoryID is not null AND p.Color = 'Red'
-GROUP BY p.ProductSubcategoryID
-HAVING Count(p.Color) >= 2
