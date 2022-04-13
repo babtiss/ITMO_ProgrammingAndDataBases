@@ -106,7 +106,7 @@ FROM Production.Product as p
 JOIN Production.ProductSubcategory as psc
 ON psc.ProductSubcategoryID = p.ProductSubcategoryID
 WHERE p.Color = 'Black' and pc.ProductCategoryID = psc.ProductCategoryID
-) > 
+) <
 (SELECT Count(p.ProductID)
 FROM Production.Product as p
 JOIN Production.ProductSubcategory as psc
@@ -163,3 +163,61 @@ HAVING COUNT(DISTINCT soh.CustomerID) > 3
 ```
 
 ### 14. Найти название подкатегории с наибольшим количеством товаров (с подзапросом)
+```
+select ps.Name
+from Production.ProductSubcategory as ps
+where ps.ProductSubcategoryID = (
+	select top 1 p.ProductSubcategoryID
+	from Production.Product as p
+	where p.ProductSubcategoryID is not null
+	group by p.ProductSubcategoryID
+	order by count(*) desc
+) 
+```
+
+### 15. Найти название категорий, где есть минимум три товара красного цвета. Использовать подзапрос.
+```
+select distinct pc.Name
+from Production.ProductCategory as pc
+where pc.ProductCategoryID in (
+	select ps.ProductCategoryID
+	from Production.ProductSubcategory as ps
+	join Production.Product as p
+	on p.ProductSubcategoryID = ps.ProductSubCategoryID
+	where p.Color = 'Red'
+	group by ps.ProductCategoryID
+	having count(*) > 3
+) 
+```
+
+### 16. Найти номера покупателей покупавших товары минимум двух подкатегорий. Использовать подзапрос.
+```
+select distinct soh.CustomerID
+from Sales.SalesOrderHeader as soh
+where exists(
+	select *
+	from Sales.SalesOrderHeader as _soh
+	join Sales.SalesOrderDetail as _sod
+	on _sod.SalesOrderID = _soh.SalesOrderID
+	join Production.Product as _p
+	on _sod.ProductID = _p.ProductID
+	where _soh.CustomerID = soh.CustomerID
+	group by _soh.CustomerID
+	having count(distinct _p.ProductSubcategoryID) >= 2
+) 
+```
+
+### 17. Найти номер покупателя и чек с наибольшим количеством товаров (по наименованию) для каждого покупателя
+```
+select soh.CustomerID, soh.SalesOrderID
+from Sales.SalesOrderHeader as soh
+where soh.SalesOrderID in (
+	select top 1 _sod.SalesOrderID
+	from Sales.SalesOrderDetail as _sod
+	join Sales.SalesOrderHeader as _soh
+	on _sod.SalesOrderID = _soh.SalesOrderID
+	where _soh.CustomerID = soh.CustomerID
+	group by _sod.SalesOrderID
+	order by count(*) desc
+)
+```
