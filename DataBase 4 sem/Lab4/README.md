@@ -13,8 +13,7 @@ Where Color in
 (SELECT Color From Production.Product
 Where ListPrice = (SELECT MAX(ListPrice) From Production.Product))
 ```
-### 3. Вывести названия товаров, чей цвет совпадает с цветом одного из товаров,
-чья цена меньше 4000
+### 3. Вывести названия товаров, чей цвет совпадает с цветом одного из товаров, чья цена меньше 4000
 ```
 SELECT Name
 FROM Production.Product
@@ -22,8 +21,7 @@ WHERE Color in
 (SELECT Color
 FROM Production.Product WHERE ListPrice < 4000)
 ```
-### 4. Найти название подкатегории где содержится самый дорогой товар с
-красным цветом
+### 4. Найти название подкатегории где содержится самый дорогой товар с красным цветом
 
 ```
 SELECT psc.Name 
@@ -81,8 +79,7 @@ WHERE s.ProductSubcategoryID = p.ProductSubcategoryID and s.color = 'Red')
 
 ### 9. Skip
 
-### 10. Найти номера чеков, таких что покупатели, к которым относятся эти чеки,
-ходили в магазин более трех раз, т.е. имеют более трех чеков
+### 10. Найти номера чеков, таких что покупатели, к которым относятся эти чеки, ходили в магазин более трех раз, т.е. имеют более трех чеков
 ```
 SELECT soh.SalesOrderID
 FROM Sales.SalesOrderHeader AS soh
